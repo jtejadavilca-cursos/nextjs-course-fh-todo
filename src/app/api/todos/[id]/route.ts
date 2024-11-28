@@ -1,6 +1,7 @@
 import prisma from "@/lib/prisma";
 import * as yup from "yup";
-import { NextResponse, NextRequest } from "next/server";
+import { NextResponse } from "next/server";
+import { getTodo } from "../helper";
 
 interface Segments {
     params: {
@@ -8,11 +9,7 @@ interface Segments {
     };
 }
 
-const getTodo = async (id: string) => {
-    return await prisma.todo.findFirst({ where: { id } });
-};
-
-export async function GET(request: Request, segment: Segments) {
+export async function GET(_: Request, segment: Segments) {
     const { id } = await segment.params;
 
     const todo = await getTodo(id);
