@@ -1,21 +1,23 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { IoTrashOutline } from "react-icons/io5";
-import { useRouter } from "next/navigation";
+//import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
-import * as todosApi from "@/todos/helpers";
+//import * as todosApi from "@/todos/helpers";
+import { addTodo, deleteCompletedTodos, hasCompletedTodos } from "../actions/todo-actions";
 
 export const NewTodo = () => {
     const [description, setDescription] = useState("");
 
-    const router = useRouter();
+    //const router = useRouter();
     const onSubmit = async (e: FormEvent) => {
         e.preventDefault();
-        const todo = await todosApi.createTodo(description);
+        //const todo = await todosApi.createTodo(description);
+        const todo = await addTodo(description);
 
         if (todo) {
-            router.refresh();
+            //router.refresh();
             setDescription("");
         }
     };
@@ -32,8 +34,8 @@ export const NewTodo = () => {
         });
 
         if (result.isConfirmed) {
-            await todosApi.deleteCompleted();
-            router.refresh();
+            //await todosApi.deleteCompleted();
+            await deleteCompletedTodos();
         }
     };
 
@@ -61,7 +63,7 @@ export const NewTodo = () => {
                 <button
                     onClick={() => deleteCompleted()}
                     type="button"
-                    className="flex items-center justify-center rounded ml-2 bg-red-400 p-2 text-white hover:bg-red-700 transition-all"
+                    className={`flex items-center justify-center rounded ml-2 bg-red-400 p-2 text-white hover:bg-red-700 transition-all`}
                 >
                     <IoTrashOutline />
                     Delete
