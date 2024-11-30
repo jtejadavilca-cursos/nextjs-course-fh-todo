@@ -6,6 +6,11 @@ import { NewTodo, TodosGrid } from "@/todos/components";
 
 //import { useEffect } from "react";
 
+export const metadata = {
+    title: "Server TODOS Page",
+    description: "Server TODOS",
+};
+
 export default async function ServerTodosPage() {
     const todos = await prisma.todo.findMany({
         orderBy: {

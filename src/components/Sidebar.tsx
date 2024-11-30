@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { CiViewBoard, CiBoxList, CiBookmarkCheck, CiLogout } from "react-icons/ci";
+import { LiaCookieSolid } from "react-icons/lia";
+import { GiBuyCard } from "react-icons/gi";
 import { SidebarItem } from ".";
 
 const menuItems = [
@@ -19,6 +21,16 @@ const menuItems = [
         title: "Server Actions",
         path: "/dashboard/server-todos",
         icon: <CiBoxList size={30} />,
+    },
+    {
+        title: "Cookies",
+        path: "/dashboard/cookies",
+        icon: <LiaCookieSolid size={30} />,
+    },
+    {
+        title: "Products",
+        path: "/dashboard/products",
+        icon: <GiBuyCard size={30} />,
     },
 ];
 
