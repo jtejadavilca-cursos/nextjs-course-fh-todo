@@ -1,7 +1,7 @@
 // Admin Dashboard https://tailwindcomponents.com/component/dashboard-12
 import { Sidebar, TopMenu } from "@/components";
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
     return (
         <>
             {/* TODO: src/components <Sidebar /> */}
@@ -10,7 +10,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             {/*TODO: Fin del <Sidebar /> */}
 
             {/* Main Layout content - Contenido principal del Layout */}
-            <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%] min-h-screen bg-slate-200">
+            <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%] min-h-screen">
                 {/* TODO: src/components <TopMenu /> */}
                 <TopMenu />
                 {/* TODO: Fin del <TopMenu /> */}

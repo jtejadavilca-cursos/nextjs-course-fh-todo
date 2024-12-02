@@ -3,8 +3,8 @@ import Link from "next/link";
 import React from "react";
 import { CiViewBoard, CiBoxList, CiBookmarkCheck, CiLogout } from "react-icons/ci";
 import { LiaCookieSolid } from "react-icons/lia";
-import { GiBuyCard } from "react-icons/gi";
 import { SidebarItem } from ".";
+import { IoBasketOutline } from "react-icons/io5";
 
 const menuItems = [
     {
@@ -30,7 +30,7 @@ const menuItems = [
     {
         title: "Products",
         path: "/dashboard/products",
-        icon: <GiBuyCard size={30} />,
+        icon: <IoBasketOutline size={30} />,
     },
 ];
 
