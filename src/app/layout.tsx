@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import AuthProvider from "@/auth/components/AuthProvider";
 
 // const geistSans = localFont({
 //     src: "./fonts/GeistVF.woff",
@@ -27,9 +28,11 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            {/* <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body> */}
-            <body className={inter.className}>{children}</body>
-        </html>
+        <AuthProvider>
+            <html lang="en">
+                {/* <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body> */}
+                <body className={inter.className}>{children}</body>
+            </html>
+        </AuthProvider>
     );
 }

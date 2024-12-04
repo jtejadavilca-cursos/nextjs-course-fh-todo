@@ -1,6 +1,7 @@
 import prisma from "@/lib/prisma";
 import * as yup from "yup";
 import { NextResponse } from "next/server";
+import { getUserFromSession } from "@/auth/actions/auth-actions";
 
 export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
@@ -16,9 +17,12 @@ export async function GET(request: Request) {
         return NextResponse.json({ message: "The query param 'skip' must be a number" }, { status: 400 });
     }
 
+    const userSession = await getUserFromSession();
+
     const todos = await prisma.todo.findMany({
         take: +take,
         skip: +skip,
+        where: { userId: userSession?.id },
     });
 
     return NextResponse.json(todos);
@@ -32,7 +36,9 @@ export async function POST(req: Request) {
     try {
         const data = await postSchema.validate(await req.json(), { strict: true });
 
-        const todo = await prisma.todo.create({ data });
+        const userSession = await getUserFromSession();
+
+        const todo = await prisma.todo.create({ data: { ...data, userId: userSession?.id! } });
 
         return NextResponse.json(todo, { status: 201 });
     } catch (error: any) {

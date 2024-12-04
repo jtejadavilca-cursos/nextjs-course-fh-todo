@@ -25,6 +25,10 @@ npx prisma generate
 http://localhost:3000/api/seed
 ```
 
+> NOTA: Credenciales por defecto:\
+> email: default@gmail.com\
+> password: 123456
+
 # Prisma commands:
 
 ```bash

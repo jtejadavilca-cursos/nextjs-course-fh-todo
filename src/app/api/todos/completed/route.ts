@@ -1,11 +1,14 @@
+import { getUserFromSession } from "@/auth/actions/auth-actions";
 import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
 export async function DELETE(req: Request) {
     try {
+        const userSession = await getUserFromSession();
         const todos = await prisma.todo.deleteMany({
             where: {
                 completed: true,
+                userId: userSession?.id,
             },
         });
 
